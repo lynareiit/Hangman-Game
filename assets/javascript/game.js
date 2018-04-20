@@ -114,6 +114,7 @@ document.onkeyup = function(event) {
 					console.log(lettersGuessed);
 					console.log(answerSpaces + "test the array");
 					console.log(numGuessesRemain);
+					
 			// Close the else statement
 			}
 
@@ -130,6 +131,8 @@ document.onkeyup = function(event) {
 }
 // notify guesses remain
 console.log(numGuessesRemain);
+
+
 
 // create a function to determine wins
 function winsDetermined () {
