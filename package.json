@@ -1,0 +1,24 @@
+{
+  "name": "constructor_hangman",
+  "version": "1.0.0",
+  "description": "javascript assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lynareiit/Hangman-Game.git"
+  },
+  "keywords": [
+    "javascript",
+    "constructor",
+    "logic"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lynareiit/Hangman-Game/issues"
+  },
+  "homepage": "https://github.com/lynareiit/Hangman-Game#readme"
+}

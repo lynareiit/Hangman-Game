@@ -3,9 +3,6 @@
 // 				// inside of document.ready assign keylistener (keyup)
 // 				//----> need if/else for wins and losses after keyups
 
-
-		
-
 // 		// this will be game start function
 // 		document.onkeyup = startGame()
 // 			// Output the computer will choose a letter
@@ -14,9 +11,6 @@
 // 				// Math.floor() is a function that returns the largest integer less than or equal to a given number
 // 					// Math.random() is a function that returns a floating-point, pseudo-random number in the range [0, 1] but does not include 1. 
 // 			var computerChoice = computerOptions[Math.floor(Math.random() * computerOptions.length)]
-
-
-
 
 // 				// key pressed by user
 // 		// var userGuess = event.key;
@@ -42,21 +36,20 @@
 // 				var userGuesses
 // 				// ADD A FUNCTION HERE TO RECORD ALL PREVIOUS USER GUESSES TO REMAIN ON THE PAGE
 
-
-
 // Create an array with the words for user to guess
-var randomWordArray = ["generate", "remix", "original", "dance", "rock", "alternative", "jazz"];
-// Guesses remaining
+var wordArray = ["electronic", "remix", "original", "dance", "rock", "alternative", "jazz", "trance", "pop"];
 var numGuessesRemain = 10;
 
 // Leave global arrays empty - define specific arrays later
 // Word guesses
 // Use "" to separate the string
 var wordChoice = "";
-var answerSpaces = [];
+var answerBlanks = [];
+
 // Letter guesses
 var currentLetters = [];
 var lettersGuessed = [];
+
 // Win/loss variables defined
 var wins = 0;
 var losses = 0;
@@ -68,7 +61,7 @@ function startGame() {
 	answerSpaces = [];
 		// start with 10 guesses --> will decrease later
 		numGuessesRemain = 10;
-		wordChoice = numGuessesRemain[Math.floor(Math.random() * numGuessesRemain.length)];
+		wordChoice = wordArry[Math.floor(Math.random() * wordArray.length)];
 		// String prototype to split up the word
 		// If .split left empty, it returns with an empty string, not empty array.
 		currentLetters = wordChoice.split("");
@@ -77,14 +70,12 @@ function startGame() {
 				for (var i = 0; i < currentWord.length; i++) {
 					// replace variable i with spaces in letter
 					answerSpaces[i] = "_";
-				// Close for-loop
 				}
 				// document answer space on page
 				console.log(answerSpaces);
 				// jquery the word
 				// use .text to get text contents of the element, then join array variables into string so they all connect to form the word
 				$("#current-word").text(answerSpaces.join(""));
-// close the function
 }
 console.log("Test: " + numGuessesRemain);
 
@@ -97,7 +88,6 @@ document.onkeyup = function(event) {
 	if (lettersGuessed.includes(guess)===false) {
 		console.log(guess)
 		var xGuess = false;
-
 		// create a for-loop of letter guesses
 		for (var j = 0; j < currentLetters.length; j++) {
 			// if the letters guessed equal exactly the userGuess variable, then fill the answered space with the guess
@@ -107,32 +97,31 @@ document.onkeyup = function(event) {
 		}
 
 
-	if (xGuess === true) {
-		for (var j = 0; j < currentLetters.length; j++) {
-			if (currentLetters[j] === guess) {
-				answerSpaces[j] === guess;
+		if (xGuess === true) {
+			for (var j = 0; j < currentLetters.length; j++) {
+				if (currentLetters[j] === guess) {
+					answerSpaces[j] === guess;
+				}
 			}
 		}
-	}
-		// otherwise console.log the false guess and add it to the wrong letter guesses
-		else {
-			console.log("xGuess is false " + xGuess);
-			// decrease the remaining guesses
-			numGuessesRemain--;
-			// push the letter guessed
-			lettersGuessed.push(guess);
-			console.log(lettersGuessed);
-			console.log(answerSpaces + "test the array");
-			console.log(numGuessesRemain);
-		// Close the else statement
-		}
+			// otherwise console.log the false guess and add it to the wrong letter guesses
+			else {
+				console.log("xGuess is false " + xGuess);
+					// decrease the remaining guesses
+					numGuessesRemain--;
+					// push the letter guessed
+					lettersGuessed.push(guess);
+					console.log(lettersGuessed);
+					console.log(answerSpaces + "test the array");
+					console.log(numGuessesRemain);
+			// Close the else statement
+			}
 
-		// jquery the counter
-		$("#counter").text(guessesRemaining);
-		$("letter-guessed").text(lettersGuessed);
-		$("word-choice").text(answerSpaces.join(""));
-		winsDetermine ();
-	// close if statement
+			// jquery the counter
+			$("#counter").text(numGuessesRemain);
+			$("letter-guessed").text(lettersGuessed);
+			$("word-choice").text(answerSpaces.join(""));
+			winsDetermine ();
 	}
 	// if function applies, follow the for-loop. Otherwise alert the letter
 	else {
@@ -163,10 +152,6 @@ function winsDetermined () {
 		startGame();
 	}
 }
-
-
-
-
 
 // start the game over. start the function all over
 startGame();
